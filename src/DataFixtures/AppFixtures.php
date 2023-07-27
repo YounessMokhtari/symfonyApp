@@ -5,6 +5,17 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Utilisateur;
+//use App\Factory\AdminFactory;
+//use App\Factory\ClientFactory;
+use App\Factory\CommandeFactory;
+//use App\Factory\LivreurFactory;
+use App\Factory\PlatFactory;
+use App\Factory\ResetPasswordRequestFactory;
+use App\Factory\RestaurantFactory;
+use App\Factory\UserFactory;
+
+
+
 use Faker\Factory;
 use Faker\Generator;
 
@@ -22,18 +33,14 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 10; $i++) {
-            $user = new Utilisateur();
-            $user->setNom($this->faker->word())
-                ->setPrenom($this->faker->word())
-                ->setDateNaissance(new \DateTime('1990-01-01'))
-                ->setCne("123456")
-                ->setTel("0123456789")
-                ->setMotdePass("password123")
-                ->setEmail("user@example.com");
-
-            $manager->persist($user);
-        }
+        //AdminFactory::createMany(10);
+       // ClientFactory::createMany(10);
+        CommandeFactory::createMany(10);
+        //LivreurFactory::createMany(10);
+        PlatFactory::createMany(10);
+        //ResetPasswordRequestFactory::createMany(10);
+        RestaurantFactory::createMany(10);
+        UserFactory::createMany(1);
         $manager->flush();
     }
 }

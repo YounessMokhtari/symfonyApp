@@ -9,7 +9,8 @@ use App\Repository\UtilisateurRepository;
 use App\Entity\Utilisateur;
 class UserControlleurController extends AbstractController
 {
-    #[Route('/user/controlleur', name: 'app_user_controlleur')]
+   //#[Route('/user/controlleur', name: 'app_user_controlleur')]
+    #[Route('/user/controlleur', name: 'app_user_controlleur', methods: ['GET'])]
     public function index(UtilisateurRepository $userRep ): Response
     {   
         $utilisateurs=$userRep->findAll();

@@ -19,4 +19,6 @@ jobs:
 
     - name: Install composer
       run: composer install 
+    - name: run phpstan 
+      run: composer require phpstan/phpstan
 
